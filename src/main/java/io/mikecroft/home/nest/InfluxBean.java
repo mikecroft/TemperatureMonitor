@@ -8,11 +8,12 @@ import org.influxdb.dto.QueryResult;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
-import java.util.concurrent.TimeUnit;
+import javax.ejb.Startup;
 
 /**
  * Created by mike on 30/11/16.
  */
+@Startup
 @Singleton
 public class InfluxBean {
 
@@ -25,7 +26,7 @@ public class InfluxBean {
         influxDB.createDatabase(dbName);
 
         // Flush every 2 points, at least every 5 seconds
-        influxDB.enableBatch(2, 5, TimeUnit.SECONDS);
+        // influxDB.enableBatch(2, 5, TimeUnit.SECONDS);
     }
 
 
